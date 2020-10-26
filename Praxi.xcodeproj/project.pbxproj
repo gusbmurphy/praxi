@@ -13,6 +13,9 @@
 		0F8689C82547377300FE85B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F8689C72547377300FE85B9 /* Preview Assets.xcassets */; };
 		0F8689D32547377300FE85B9 /* PraxiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8689D22547377300FE85B9 /* PraxiTests.swift */; };
 		0F8689DE2547377300FE85B9 /* PraxiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8689DD2547377300FE85B9 /* PraxiUITests.swift */; };
+		0F8689F02547381200FE85B9 /* ExerciseHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8689EF2547381200FE85B9 /* ExerciseHost.swift */; };
+		0F8689FB2547511A00FE85B9 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8689FA2547511A00FE85B9 /* Exercise.swift */; };
+		0FFEE4F725475AAF00482339 /* ExerciseSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFEE4F625475AAF00482339 /* ExerciseSummary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		0F8689D92547377300FE85B9 /* PraxiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PraxiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F8689DD2547377300FE85B9 /* PraxiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PraxiUITests.swift; sourceTree = "<group>"; };
 		0F8689DF2547377300FE85B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F8689EF2547381200FE85B9 /* ExerciseHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHost.swift; sourceTree = "<group>"; };
+		0F8689FA2547511A00FE85B9 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		0FFEE4F625475AAF00482339 /* ExerciseSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSummary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +101,8 @@
 		0F8689BF2547377200FE85B9 /* Praxi */ = {
 			isa = PBXGroup;
 			children = (
+				0F868A00254751C700FE85B9 /* Models */,
+				0F8689EE254737FE00FE85B9 /* Exercise */,
 				0F8689C02547377200FE85B9 /* PraxiApp.swift */,
 				0F8689C22547377200FE85B9 /* ContentView.swift */,
 				0F8689C42547377300FE85B9 /* Assets.xcassets */,
@@ -128,6 +136,23 @@
 				0F8689DF2547377300FE85B9 /* Info.plist */,
 			);
 			path = PraxiUITests;
+			sourceTree = "<group>";
+		};
+		0F8689EE254737FE00FE85B9 /* Exercise */ = {
+			isa = PBXGroup;
+			children = (
+				0F8689EF2547381200FE85B9 /* ExerciseHost.swift */,
+				0FFEE4F625475AAF00482339 /* ExerciseSummary.swift */,
+			);
+			path = Exercise;
+			sourceTree = "<group>";
+		};
+		0F868A00254751C700FE85B9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0F8689FA2547511A00FE85B9 /* Exercise.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,7 +285,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F8689C32547377200FE85B9 /* ContentView.swift in Sources */,
+				0F8689FB2547511A00FE85B9 /* Exercise.swift in Sources */,
+				0FFEE4F725475AAF00482339 /* ExerciseSummary.swift in Sources */,
 				0F8689C12547377200FE85B9 /* PraxiApp.swift in Sources */,
+				0F8689F02547381200FE85B9 /* ExerciseHost.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
