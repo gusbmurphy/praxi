@@ -42,22 +42,7 @@ struct ExerciseSummary: View {
                 if exercise.variables.count > 0 {
                     VStack(alignment: .leading) {
                         ForEach(exercise.variables, id: \.self) { variable in
-                            if variable.setMembers.count > 0 {
-                                VStack(alignment: .leading) {
-                                    HStack {
-                                        Text(variable.name)
-                                        Badge(name: variable.type)
-                                    }
-                                    
-                                    Text(variable.getSetMembersString())
-                                        .padding(.leading)
-                                }
-                            } else {
-                                HStack {
-                                    Text(variable.name)
-                                    Badge(name: variable.type)
-                                }
-                            }
+                            ExerciseVariableSummary(variable: variable)
                         }
                     }
                     .padding(.top)
@@ -76,6 +61,29 @@ struct ExerciseSummary: View {
                     }
                 }
                 .padding(.top)
+            }
+        }
+    }
+}
+
+struct ExerciseVariableSummary: View {
+    var variable: ExerciseVariable
+    
+    var body: some View {
+        if variable.setMembers.count > 0 {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text(variable.name)
+                    Badge(name: variable.type)
+                }
+                
+                Text(variable.getSetMembersString())
+                    .padding(.leading)
+            }
+        } else {
+            HStack {
+                Text(variable.name)
+                Badge(name: variable.type)
             }
         }
     }

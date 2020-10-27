@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "674DD082-7175-4258-9CE2-A9CBDCDA5341"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "45A53619-8A3F-4707-A5C2-74F012679928"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Praxi/Exercise/ExerciseEditor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "45A53619-8A3F-4707-A5C2-74F012679928 - 495b1ce4b86e6747"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #4 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, Swift.Optional&lt;SwiftUI.Button&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.imageScale(SwiftUI.Image.Scale) -&gt; some&gt;&gt;.0&gt;&gt;)&gt;&gt;, Swift.Optional&lt;SwiftUI.Group&lt;SwiftUI.TupleView&lt;(Praxi.VariableEditor, SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Spacer, SwiftUI.Button&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.imageScale(SwiftUI.Image.Scale) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Button&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.imageScale(SwiftUI.Image.Scale) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;)&gt;&gt;&gt;, Swift.Optional&lt;SwiftUI.VStack&lt;SwiftUI.ForEach&lt;Swift.Array&lt;Praxi.ExerciseVariable&gt;, Praxi.ExerciseVariable, Praxi.ExerciseVariableSummary&gt;&gt;&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, SwiftUI.Divider, SwiftUI.TextField&lt;SwiftUI.Text&gt;)&gt;&gt;, SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0)&gt;&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.aspectRatio(_: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, contentMode: SwiftUI.ContentMode) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;, SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, SwiftUI.TextEditor)&gt;&gt;, SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, Swift.Optional&lt;SwiftUI.Button&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.imageScale(SwiftUI.Image.Scale) -&gt; some&gt;&gt;.0&gt;&gt;)&gt;&gt;, Swift.Optional&lt;SwiftUI.Group&lt;SwiftUI.TupleView&lt;(Praxi.VariableEditor, SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Spacer, SwiftUI.Button&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.imageScale(SwiftUI.Image.Scale) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Button&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.imageScale(SwiftUI.Image.Scale) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;)&gt;&gt;&gt;, Swift.Optional&lt;SwiftUI.VStack&lt;SwiftUI.ForEach&lt;Swift.Array&lt;Praxi.ExerciseVariable&gt;, Praxi.ExerciseVariable, Praxi.ExerciseVariableSummary&gt;&gt;&gt;)&gt;&gt;, SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.imageScale(SwiftUI.Image.Scale) -&gt; some&gt;&gt;.0)&gt;&gt;, Swift.Optional&lt;SwiftUI.VStack&lt;SwiftUI.ForEach&lt;Swift.Array&lt;Swift.String&gt;, Swift.String, Praxi.Badge&gt;&gt;&gt;)&gt;&gt;)&gt; in Praxi.ExerciseEditor.body.getter : some"
+                  moduleName = "Praxi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/augustusmurphy/Documents/Praxi/Praxi/Exercise/ExerciseEditor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "1470">
+               </Location>
+               <Location
+                  uuid = "45A53619-8A3F-4707-A5C2-74F012679928 - ea9dc6feafce7d9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Text, Swift.Optional&lt;SwiftUI.Button&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.imageScale(SwiftUI.Image.Scale) -&gt; some&gt;&gt;.0&gt;&gt;)&gt; in closure #4 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, Swift.Optional&lt;SwiftUI.Button&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.imageScale(SwiftUI.Image.Scale) -&gt; some&gt;&gt;.0&gt;&gt;)&gt;&gt;, Swift.Optional&lt;SwiftUI.Group&lt;SwiftUI.TupleView&lt;(Praxi.VariableEditor, SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Spacer, SwiftUI.Button&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.imageScale(SwiftUI.Image.Scale) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Button&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.imageScale(SwiftUI.Image.Scale) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;)&gt;&gt;&gt;, Swift.Optional&lt;SwiftUI.VStack&lt;SwiftUI.ForEach&lt;Swift.Array&lt;Praxi.ExerciseVariable&gt;, Praxi.ExerciseVariable, Praxi.ExerciseVariableSummary&gt;&gt;&gt;)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, SwiftUI.Divider, SwiftUI.TextField&lt;SwiftUI.Text&gt;)&gt;&gt;, SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.foregroundColor(Swift.Optional&lt;SwiftUI.Color&gt;) -&gt; some&gt;&gt;.0)&gt;&gt;, Swift.Optional&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.aspectRatio(_: Swift.Optional&lt;CoreGraphics.CGFloat&gt;, contentMode: SwiftUI.ContentMode) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;, SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, SwiftUI.TextEditor)&gt;&gt;, SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, Swift.Optional&lt;SwiftUI.Button&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.imageScale(SwiftUI.Image.Scale) -&gt; some&gt;&gt;.0&gt;&gt;)&gt;&gt;, Swift.Optional&lt;SwiftUI.Group&lt;SwiftUI.TupleView&lt;(Praxi.VariableEditor, SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Spacer, SwiftUI.Button&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.imageScale(SwiftUI.Image.Scale) -&gt; some&gt;&gt;.0&gt;, SwiftUI.Button&lt;&lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.imageScale(SwiftUI.Image.Scale) -&gt; some&gt;&gt;.0&gt;)&gt;&gt;)&gt;&gt;&gt;, Swift.Optional&lt;SwiftUI.VStack&lt;SwiftUI.ForEach&lt;Swift.Array&lt;Praxi.ExerciseVariable&gt;, Praxi.ExerciseVariable, Praxi.ExerciseVariableSummary&gt;&gt;&gt;)&gt;&gt;, SwiftUI.VStack&lt;SwiftUI.TupleView&lt;(SwiftUI.HStack&lt;SwiftUI.TupleView&lt;(SwiftUI.Text, &lt;&lt;opaque return type of (extension in SwiftUI):SwiftUI.View.imageScale(SwiftUI.Image.Scale) -&gt; some&gt;&gt;.0)&gt;&gt;, Swift.Optional&lt;SwiftUI.VStack&lt;SwiftUI.ForEach&lt;Swift.Array&lt;Swift.String&gt;, Swift.String, Praxi.Badge&gt;&gt;&gt;)&gt;&gt;)&gt; in Praxi.ExerciseEditor.body.getter : some"
+                  moduleName = "Praxi"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/augustusmurphy/Documents/Praxi/Praxi/Exercise/ExerciseEditor.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "361">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4E896AC0-1E6C-4CC1-83BC-9EC16270913C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Praxi/Exercise/ExerciseEditor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C5C3BB59-F04A-4374-860A-A7A2476C6619"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Praxi/Exercise/ExerciseEditor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "18593BF1-0D3D-428D-9A34-24F3291E790E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Praxi/Exercise/ExerciseEditor.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

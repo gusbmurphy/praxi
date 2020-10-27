@@ -9,16 +9,35 @@ import SwiftUI
 
 struct ExerciseHost: View {
     @Environment(\.editMode) var mode
+    @EnvironmentObject var userData: UserData
     @State var draftExercise = Exercise.default
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack {
+                if self.mode?.wrappedValue == .active {
+                    Button("Cancel") {
+                        self.draftExercise = self.userData.exercise
+                        self.mode?.animation().wrappedValue = .inactive
+                    }
+                }
+
                 Spacer()
+
                 EditButton()
             }
-            
-            ExerciseSummary(exercise: draftExercise)
+
+            if self.mode?.wrappedValue == .inactive {
+                ExerciseSummary(exercise: userData.exercise)
+            } else {
+                ExerciseEditor(exercise: $draftExercise)
+                    .onAppear {
+                        self.draftExercise = self.userData.exercise
+                    }
+                    .onDisappear {
+                        self.userData.exercise = self.draftExercise
+                    }
+            }
         }
         .padding()
     }
@@ -26,7 +45,7 @@ struct ExerciseHost: View {
 
 struct Badge: View {
     var name: String
-    
+
     var body: some View {
         Text(name.uppercased())
             .font(.subheadline)
@@ -37,6 +56,6 @@ struct Badge: View {
 
 struct ExerciseHost_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseHost()
+        ExerciseHost().environmentObject(UserData())
     }
 }

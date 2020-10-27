@@ -27,7 +27,8 @@ struct Exercise {
 }
 
 struct ExerciseVariable: Hashable {
-    var name, type: String
+    var name = ""
+    var type = ""
     var setMembers: [String] = []
     
     func getSetMembersString() -> String {
