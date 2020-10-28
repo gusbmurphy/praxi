@@ -11,14 +11,14 @@ struct ExerciseEditor: View {
     @Binding var exercise: Exercise
     @State private var showVariableEditor = false
     @State private var showAreaEditor = false
-    @State private var draftVariable: ExerciseVariable = ExerciseVariable()
+    @State private var lowerEditorIsActive = false
+    @State private var draftVariable = ExerciseVariable()
     @State private var draftArea = ""
     
     var body: some View {
-        List {
+        VStack(alignment: .leading, spacing: 20) {
             HStack {
                 Text("Name").font(.headline)
-                Divider()
                 TextField("Name", text: $exercise.name)
             }
             
@@ -27,7 +27,7 @@ struct ExerciseEditor: View {
                 HStack {
                     Text("Image").font(.headline)
                     Image(systemName: "camera")
-                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                        .foregroundColor(/*@START_MENU_TOKEN@*/ .blue/*@END_MENU_TOKEN@*/)
                 }
                 
                 if exercise.imageName != nil {
@@ -45,7 +45,8 @@ struct ExerciseEditor: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text("Variables").font(.headline)
-                    if !showVariableEditor {
+                    
+                    if !showVariableEditor && !lowerEditorIsActive {
                         Button(action: {
                             self.showVariableEditor.toggle()
                         }) {
@@ -58,33 +59,38 @@ struct ExerciseEditor: View {
                 
                 if showVariableEditor {
                     Group {
-                        VariableEditor(variable: $draftVariable)
+                        VariableEditor(variable: $draftVariable, isEditing: $lowerEditorIsActive)
                         
-                        HStack {
-                            Spacer()
-                            
-                            Button(action: {
-                                self.showVariableEditor.toggle()
-                            }) {
-                                Image(systemName: "checkmark.circle")
-                                    .foregroundColor(.green)
-                                    .imageScale(.large)
-                            }
-                            
-                            Button(action: {
-                                self.showVariableEditor.toggle()
-                            }) {
-                                Image(systemName: "xmark.circle")
-                                    .foregroundColor(.red)
-                                    .imageScale(.large)
+                        if !lowerEditorIsActive {
+                            HStack {
+                                Spacer()
+                                
+                                Button(action: {
+                                    self.exercise.variables.insert($draftVariable.wrappedValue, at: 0)
+                                    self.draftVariable = ExerciseVariable()
+                                    self.showVariableEditor.toggle()
+                                }) {
+                                    Image(systemName: "checkmark.circle")
+                                        .foregroundColor(.green)
+                                        .imageScale(.large)
+                                }
+                                
+                                Button(action: {
+                                    self.draftVariable = ExerciseVariable()
+                                    self.showVariableEditor.toggle()
+                                }) {
+                                    Image(systemName: "xmark.circle")
+                                        .foregroundColor(.red)
+                                        .imageScale(.large)
+                                }
                             }
                         }
                     }
                 }
                 
-                if exercise.variables.count > 0 {
+                if self.exercise.variables.count > 0 {
                     VStack(alignment: .leading) {
-                        ForEach(exercise.variables, id: \.self) { variable in
+                        ForEach(self.exercise.variables, id: \.self) { variable in
                             ExerciseVariableSummary(variable: variable)
                         }
                     }
@@ -94,9 +100,42 @@ struct ExerciseEditor: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text("Areas").font(.headline)
-                    Image(systemName: "plus.circle")
-                        .foregroundColor(.blue)
-                        .imageScale(.large)
+                    
+                    if !showAreaEditor && !lowerEditorIsActive {
+                        Button(action: {
+                            self.showAreaEditor.toggle()
+                        }) {
+                            Image(systemName: "plus.circle")
+                                .foregroundColor(.blue)
+                                .imageScale(.large)
+                        }
+                    }
+                }
+                
+                if showAreaEditor {
+                    AreaEditor(area: $draftArea)
+                    
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            self.exercise.areas.insert($draftArea.wrappedValue, at: 0)
+                            self.draftArea = ""
+                            self.showAreaEditor.toggle()
+                        }) {
+                            Image(systemName: "checkmark.circle")
+                                .foregroundColor(.green)
+                                .imageScale(.large)
+                        }
+                    
+                        Button(action: {
+                            self.draftArea = ""
+                            self.showAreaEditor.toggle()
+                        }) {
+                            Image(systemName: "xmark.circle")
+                                .foregroundColor(.red)
+                                .imageScale(.large)
+                        }
+                    }
                 }
                     
                 if exercise.areas.count > 0 {
@@ -108,11 +147,15 @@ struct ExerciseEditor: View {
                 }
             }
         }
+        .padding()
     }
 }
 
 struct VariableEditor: View {
     @Binding var variable: ExerciseVariable
+    @Binding var isEditing: Bool
+    @State var showMemberEditor = false
+    @State var draftMember = ""
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -129,9 +172,43 @@ struct VariableEditor: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text("Members").font(.headline)
-                    Image(systemName: "plus.circle")
-                        .foregroundColor(.blue)
-                        .imageScale(.large)
+                    
+                    if !showMemberEditor {
+                        Button(action: {
+                            self.isEditing.toggle()
+                            self.showMemberEditor.toggle()
+                        }) {
+                            Image(systemName: "plus.circle")
+                                .foregroundColor(.blue)
+                                .imageScale(.large)
+                        }
+                    }
+                }
+                
+                if showMemberEditor {
+                    HStack {
+                        TextField("New Member", text: $draftMember)
+                        
+                        Spacer()
+                        Button(action: {
+                            self.variable.setMembers.insert($draftMember.wrappedValue, at: 0)
+                            self.draftMember = ""
+                            self.showMemberEditor.toggle()
+                        }) {
+                            Image(systemName: "checkmark.circle")
+                                .foregroundColor(.green)
+                                .imageScale(.large)
+                        }
+                    
+                        Button(action: {
+                            self.draftMember = ""
+                            self.showMemberEditor.toggle()
+                        }) {
+                            Image(systemName: "xmark.circle")
+                                .foregroundColor(.red)
+                                .imageScale(.large)
+                        }
+                    }
                 }
                 
                 VStack {
@@ -141,13 +218,21 @@ struct VariableEditor: View {
                 }
             }
         }
-        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
+        .border(Color.black, width: 1)
+    }
+}
+
+struct AreaEditor: View {
+    @Binding var area: String
+    
+    var body: some View {
+        Text("Name").font(.headline)
+        TextField("Name", text: $area)
     }
 }
 
 struct ExerciseEditor_Previews: PreviewProvider {
     static var previews: some View {
         ExerciseEditor(exercise: .constant(.default))
-//        VariableEditor(variable: .constant(Exercise.default.variables[1]))
     }
 }
