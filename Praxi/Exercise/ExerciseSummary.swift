@@ -16,12 +16,12 @@ struct ExerciseSummary: View {
                 .bold()
                 .font(.title)
         
-            if exercise.imageName != nil {
+            if exercise.image != nil {
                 VStack(alignment: .leading) {
                     Text("Image")
                         .font(.headline)
                 
-                    Image(exercise.imageName!)
+                    exercise.image!
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                 }

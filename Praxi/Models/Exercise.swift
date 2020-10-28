@@ -6,17 +6,18 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Exercise {
     var name: String
-    var imageName: String?
+    var image: Image?
     var description: String
     var variables: [ExerciseVariable]
     var areas: [String]
     
     static let `default` = Self(
         name: "Exercise",
-        imageName: "exerciseph",
+        image: Image("exerciseph"),
         description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam suscipit non massa in feugiat. Suspendisse fermentum, neque sed cursus convallis, purus dolor suscipit massa, sit amet egestas purus neque vel felis.",
         variables: [
             ExerciseVariable(name: "Tempo", type: "range"),

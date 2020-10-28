@@ -13,33 +13,33 @@ struct ExerciseHost: View {
     @State var draftExercise = Exercise.default
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 20) {
-            HStack {
-                if self.mode?.wrappedValue == .active {
-                    Button("Cancel") {
-                        self.draftExercise = self.userData.exercise
-                        self.mode?.animation().wrappedValue = .inactive
+            VStack(alignment: .leading, spacing: 20) {
+                HStack {
+                    if self.mode?.wrappedValue == .active {
+                        Button("Cancel") {
+                            self.draftExercise = self.userData.exercise
+                            self.mode?.animation().wrappedValue = .inactive
+                        }
                     }
+
+                    Spacer()
+
+                    EditButton()
                 }
 
-                Spacer()
-
-                EditButton()
+                if self.mode?.wrappedValue == .inactive {
+                    ExerciseSummary(exercise: userData.exercise)
+                } else {
+                    ExerciseEditor(exercise: $draftExercise)
+                        .onAppear {
+                            self.draftExercise = self.userData.exercise
+                        }
+                        .onDisappear {
+                            self.userData.exercise = self.draftExercise
+                        }
+                }
             }
-
-            if self.mode?.wrappedValue == .inactive {
-                ExerciseSummary(exercise: userData.exercise)
-            } else {
-                ExerciseEditor(exercise: $draftExercise)
-                    .onAppear {
-                        self.draftExercise = self.userData.exercise
-                    }
-                    .onDisappear {
-                        self.userData.exercise = self.draftExercise
-                    }
-            }
-        }
-        .padding()
+            .padding()
     }
 }
 

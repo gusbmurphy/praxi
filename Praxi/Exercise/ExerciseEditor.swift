@@ -9,11 +9,13 @@ import SwiftUI
 
 struct ExerciseEditor: View {
     @Binding var exercise: Exercise
+    @State private var showImagePicker = false
     @State private var showVariableEditor = false
     @State private var showAreaEditor = false
     @State private var lowerEditorIsActive = false
     @State private var draftVariable = ExerciseVariable()
     @State private var draftArea = ""
+    @State private var inputImage: UIImage?
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -26,12 +28,16 @@ struct ExerciseEditor: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text("Image").font(.headline)
-                    Image(systemName: "camera")
-                        .foregroundColor(/*@START_MENU_TOKEN@*/ .blue/*@END_MENU_TOKEN@*/)
+                    Button(action: {
+                        self.showImagePicker.toggle()
+                    }) {
+                        Image(systemName: "camera")
+                            .foregroundColor(.blue)
+                    }
                 }
                 
-                if exercise.imageName != nil {
-                    Image(exercise.imageName!)
+                if $exercise.image.wrappedValue != nil {
+                    $exercise.image.wrappedValue!
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                 }
@@ -148,6 +154,14 @@ struct ExerciseEditor: View {
             }
         }
         .padding()
+        .sheet(isPresented: $showImagePicker, onDismiss: loadImage) {
+            ImagePicker(image: self.$inputImage)
+        }
+    }
+    
+    private func loadImage() {
+        guard let inputImage = inputImage else { return }
+        self.exercise.image = Image(uiImage: inputImage)
     }
 }
 
@@ -228,11 +242,5 @@ struct AreaEditor: View {
     var body: some View {
         Text("Name").font(.headline)
         TextField("Name", text: $area)
-    }
-}
-
-struct ExerciseEditor_Previews: PreviewProvider {
-    static var previews: some View {
-        ExerciseEditor(exercise: .constant(.default))
     }
 }
