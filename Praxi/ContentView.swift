@@ -8,13 +8,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var userData: UserData
     var body: some View {
-        ExerciseHost().environmentObject(UserData())
+        NavigationView {
+            List {
+                NavigationLink (
+                    destination: ExerciseList()
+                ) {
+                    Text("Exercises")
+                }
+            }
+            .navigationTitle("Home")
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView().environmentObject(UserData())
     }
 }

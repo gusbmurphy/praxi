@@ -8,5 +8,5 @@
 import Foundation
 
 final class UserData: ObservableObject {
-    @Published var exercise = Exercise.default
+    @Published var exercises: [Exercise] = [Exercise.default]
 }

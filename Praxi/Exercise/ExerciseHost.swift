@@ -11,35 +11,51 @@ struct ExerciseHost: View {
     @Environment(\.editMode) var mode
     @EnvironmentObject var userData: UserData
     @State var draftExercise = Exercise.default
+    var exerciseIndex: Int
 
     var body: some View {
-            VStack(alignment: .leading, spacing: 20) {
-                HStack {
-                    if self.mode?.wrappedValue == .active {
-                        Button("Cancel") {
-                            self.draftExercise = self.userData.exercise
-                            self.mode?.animation().wrappedValue = .inactive
-                        }
+        VStack(alignment: .leading) {
+            HStack {
+                if self.mode?.wrappedValue == .active {
+                    Button("Cancel") {
+                        self.draftExercise = self.userData.exercises[exerciseIndex]
+                        self.mode?.animation().wrappedValue = .inactive
                     }
-
-                    Spacer()
-
-                    EditButton()
                 }
 
-                if self.mode?.wrappedValue == .inactive {
-                    ExerciseSummary(exercise: userData.exercise)
-                } else {
-                    ExerciseEditor(exercise: $draftExercise)
-                        .onAppear {
-                            self.draftExercise = self.userData.exercise
-                        }
-                        .onDisappear {
-                            self.userData.exercise = self.draftExercise
-                        }
-                }
+                Spacer()
+
+                EditButton()
             }
-            .padding()
+
+            if self.mode?.wrappedValue == .inactive {
+                ExerciseSummary(exercise: userData.exercises[exerciseIndex])
+            } else {
+                ExerciseEditor(exercise: $draftExercise)
+                    .onAppear {
+                        self.draftExercise = self.userData.exercises[exerciseIndex]
+                    }
+                    .onDisappear {
+                        self.userData.exercises[exerciseIndex] = self.draftExercise
+                    }
+            }
+        }
+        .padding()
+        .navigationTitle(userData.exercises[exerciseIndex].name)
+//        .toolbar(content: {
+//            ToolbarItem(placement: ToolbarItemPlacement.primaryAction) {
+//                HStack {
+//                    if self.mode?.wrappedValue == .active {
+//                        Button("Cancel") {
+//                            self.draftExercise = self.userData.exercises[exerciseIndex]
+//                            self.mode?.animation().wrappedValue = .inactive
+//                        }
+//                    }
+//
+//                    EditButton()
+//                }
+//            }
+//        })
     }
 }
 
@@ -56,6 +72,8 @@ struct Badge: View {
 
 struct ExerciseHost_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseHost().environmentObject(UserData())
+        NavigationView {
+            ExerciseHost(exerciseIndex: 0).environmentObject(UserData())
+        }
     }
 }

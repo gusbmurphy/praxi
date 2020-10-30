@@ -18,6 +18,7 @@
 		0F8689DE2547377300FE85B9 /* PraxiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8689DD2547377300FE85B9 /* PraxiUITests.swift */; };
 		0F8689F02547381200FE85B9 /* ExerciseHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8689EF2547381200FE85B9 /* ExerciseHost.swift */; };
 		0F8689FB2547511A00FE85B9 /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8689FA2547511A00FE85B9 /* Exercise.swift */; };
+		0F977ABE254B209E0062F955 /* ExerciseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F977ABD254B209E0062F955 /* ExerciseList.swift */; };
 		0FFEE4F725475AAF00482339 /* ExerciseSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFEE4F625475AAF00482339 /* ExerciseSummary.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		0F8689DF2547377300FE85B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F8689EF2547381200FE85B9 /* ExerciseHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHost.swift; sourceTree = "<group>"; };
 		0F8689FA2547511A00FE85B9 /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
+		0F977ABD254B209E0062F955 /* ExerciseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseList.swift; sourceTree = "<group>"; };
 		0FFEE4F625475AAF00482339 /* ExerciseSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSummary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,6 +153,7 @@
 				0FFEE4F625475AAF00482339 /* ExerciseSummary.swift */,
 				0F3F9B162547832100FB9477 /* ExerciseEditor.swift */,
 				0F7439FF2548F88F00FAA9D5 /* ImagePicker.swift */,
+				0F977ABD254B209E0062F955 /* ExerciseList.swift */,
 			);
 			path = Exercise;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				0F8689FB2547511A00FE85B9 /* Exercise.swift in Sources */,
 				0F3F9B172547832100FB9477 /* ExerciseEditor.swift in Sources */,
 				0FFEE4F725475AAF00482339 /* ExerciseSummary.swift in Sources */,
+				0F977ABE254B209E0062F955 /* ExerciseList.swift in Sources */,
 				0F743A002548F88F00FAA9D5 /* ImagePicker.swift in Sources */,
 				0F8689C12547377200FE85B9 /* PraxiApp.swift in Sources */,
 				0F8689F02547381200FE85B9 /* ExerciseHost.swift in Sources */,
