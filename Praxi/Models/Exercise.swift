@@ -14,7 +14,37 @@ struct Exercise {
     var description: String
     var variables: [ExerciseVariable]
     var areas: [String]
+    let id: UUID = UUID()
+}
+
+struct ExerciseVariable: Hashable {
+    var name = ""
+    var type = ""
+    var setMembers: [String] = []
+    var records: [ExerciseRecord] = []
     
+    func getSetMembersString() -> String {
+        return setMembers.reduce("", {
+            $0 == "" ? $1 : $0 + ", " + $1
+        })
+    }
+}
+
+struct ExerciseRecord: Hashable {
+    var date: Date
+    var value: Any
+    var id: UUID = UUID()
+    
+    static func == (lhs: ExerciseRecord, rhs: ExerciseRecord) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
+extension Exercise {
     static let `default` = Self(
         name: "Exercise",
         image: Image("exerciseph"),
@@ -25,16 +55,4 @@ struct Exercise {
         ],
         areas: ["scales", "flexibility"]
     )
-}
-
-struct ExerciseVariable: Hashable {
-    var name = ""
-    var type = ""
-    var setMembers: [String] = []
-    
-    func getSetMembersString() -> String {
-        return setMembers.reduce("", {
-            $0 == "" ? $1 : $0 + ", " + $1
-        })
-    }
 }
