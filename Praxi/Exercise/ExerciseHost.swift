@@ -11,23 +11,12 @@ struct ExerciseHost: View {
     @Environment(\.editMode) var mode
     @EnvironmentObject var userData: UserData
     @State var draftExercise = Exercise.default
+    @State var draftRecord = ExerciseRecord(date: Date())
+    @State var showNewRecordSheet = false
     var exerciseIndex: Int
 
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
-                if self.mode?.wrappedValue == .active {
-                    Button("Cancel") {
-                        self.draftExercise = self.userData.exercises[exerciseIndex]
-                        self.mode?.animation().wrappedValue = .inactive
-                    }
-                }
-
-                Spacer()
-
-                EditButton()
-            }
-
             if self.mode?.wrappedValue == .inactive {
                 ExerciseSummary(exercise: userData.exercises[exerciseIndex])
             } else {
@@ -41,21 +30,61 @@ struct ExerciseHost: View {
             }
         }
         .padding()
+        .sheet(isPresented: $showNewRecordSheet, content: {
+            NewRecordView(record: $draftRecord, shouldShow: $showNewRecordSheet)
+        })
         .navigationTitle(userData.exercises[exerciseIndex].name)
-//        .toolbar(content: {
-//            ToolbarItem(placement: ToolbarItemPlacement.primaryAction) {
-//                HStack {
-//                    if self.mode?.wrappedValue == .active {
-//                        Button("Cancel") {
-//                            self.draftExercise = self.userData.exercises[exerciseIndex]
-//                            self.mode?.animation().wrappedValue = .inactive
-//                        }
-//                    }
-//
-//                    EditButton()
-//                }
-//            }
-//        })
+        .toolbar(content: {
+            ToolbarItem(placement: ToolbarItemPlacement.cancellationAction) {
+                if self.mode?.wrappedValue == .active {
+                    Button("Cancel") {
+                        self.draftExercise = self.userData.exercises[exerciseIndex]
+                        self.mode?.animation().wrappedValue = .inactive
+                    }
+                }
+            }
+
+            ToolbarItem(placement: ToolbarItemPlacement.primaryAction) {
+                EditButton()
+            }
+
+            ToolbarItem(placement: ToolbarItemPlacement.bottomBar) {
+                Button(action: {
+                    showNewRecordSheet.toggle()
+                }, label: {
+                    Image(systemName: "pencil.circle.fill")
+                        .imageScale(.large)
+                })
+            }
+        })
+    }
+}
+
+struct NewRecordView: View {
+    @Binding var record: ExerciseRecord
+    @Binding var shouldShow: Bool
+
+    var body: some View {
+        NavigationView {
+            VStack {
+                Text(getFormattedDate(record.date))
+            }
+            .navigationBarTitle(Text("New Record"), displayMode: .inline)
+            .navigationBarItems(trailing: Button(action: {
+                shouldShow.toggle()
+            }, label: {
+                Text("Done")
+            }))
+        }
+    }
+
+    func getFormattedDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .medium
+        formatter.timeZone = .current
+
+        return formatter.string(from: date)
     }
 }
 

@@ -14,6 +14,7 @@ struct Exercise {
     var description: String
     var variables: [ExerciseVariable]
     var areas: [String]
+    var records: [ExerciseRecord] = []
     let id: UUID = UUID()
 }
 
@@ -21,7 +22,6 @@ struct ExerciseVariable: Hashable {
     var name = ""
     var type = ""
     var setMembers: [String] = []
-    var records: [ExerciseRecord] = []
     
     func getSetMembersString() -> String {
         return setMembers.reduce("", {
@@ -32,7 +32,7 @@ struct ExerciseVariable: Hashable {
 
 struct ExerciseRecord: Hashable {
     var date: Date
-    var value: Any
+    var variableValues: [String: Any] = [:]
     var id: UUID = UUID()
     
     static func == (lhs: ExerciseRecord, rhs: ExerciseRecord) -> Bool {

@@ -20,6 +20,7 @@ struct ContentView: View {
             }
             .navigationTitle("Home")
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

@@ -12,28 +12,13 @@ struct ExerciseSummary: View {
     
     var body: some View {
         List {
-            Text(exercise.name)
-                .bold()
-                .font(.title)
-        
             if exercise.image != nil {
-                VStack(alignment: .leading) {
-                    Text("Image")
-                        .font(.headline)
-                
-                    exercise.image!
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                }
+                exercise.image!
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
             }
-        
-            VStack(alignment: .leading) {
-                Text("Description")
-                    .font(.headline)
             
-                Text(exercise.description)
-                    .padding(.top)
-            }
+            Text(exercise.description)
         
             VStack(alignment: .leading) {
                 Text("Variables")

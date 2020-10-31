@@ -24,7 +24,6 @@ struct ExerciseEditor: View {
                 TextField("Name", text: $exercise.name)
             }
             
-            // TODO: Add image editing
             VStack(alignment: .leading) {
                 HStack {
                     Text("Image").font(.headline)
@@ -159,7 +158,7 @@ struct ExerciseEditor: View {
         }
         .padding()
         .sheet(isPresented: $showImagePicker, onDismiss: loadImage) {
-            ImagePicker(image: self.$inputImage)
+                ImagePicker(image: self.$inputImage)
         }
     }
     
