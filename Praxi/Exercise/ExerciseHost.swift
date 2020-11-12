@@ -11,7 +11,7 @@ struct ExerciseHost: View {
     @Environment(\.editMode) var mode
     @EnvironmentObject var userData: UserData
     @State var draftExercise = Exercise.default
-    @State var draftRecord = ExerciseRecord(date: Date())
+    @State var draftRecord = ExerciseRecord()
     @State var showNewRecordSheet = false
     var exerciseIndex: Int
 

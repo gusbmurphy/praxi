@@ -158,7 +158,7 @@ struct ExerciseEditor: View {
         }
         .padding()
         .sheet(isPresented: $showImagePicker, onDismiss: loadImage) {
-                ImagePicker(image: self.$inputImage)
+            ImagePicker(image: self.$inputImage)
         }
     }
     
@@ -181,16 +181,16 @@ struct VariableEditor: View {
                 TextField("Name", text: $variable.name)
             }
             
-            HStack {
-                Text("Type").font(.headline)
-                TextField("Type", text: $variable.type)
-            }
+//            HStack {
+//                Text("Type").font(.headline)
+//                TextField("Type", text: $variable.type)
+//            }
             
             VStack(alignment: .leading) {
                 HStack {
                     Text("Members").font(.headline)
                     
-                    if !showMemberEditor {
+                    if variable is ExerciseSetVariable && !showMemberEditor {
                         Button(action: {
                             self.isEditing.toggle()
                             self.showMemberEditor.toggle()
@@ -202,36 +202,42 @@ struct VariableEditor: View {
                     }
                 }
                 
-                if showMemberEditor {
-                    HStack {
-                        TextField("New Member", text: $draftMember)
+                if let setVariable = variable as? ExerciseSetVariable {
+                    if showMemberEditor {
+                        HStack {
+                            TextField("New Member", text: $draftMember)
                         
-                        Spacer()
-                        Button(action: {
-                            self.variable.setMembers.insert($draftMember.wrappedValue, at: 0)
-                            self.draftMember = ""
-                            self.showMemberEditor.toggle()
-                        }) {
-                            Image(systemName: "checkmark.circle")
-                                .foregroundColor(.green)
-                                .imageScale(.large)
-                        }
+                            Spacer()
+                            Button(action: {
+                                setVariable.members.insert($draftMember.wrappedValue, at: 0)
+                                self.draftMember = ""
+                                self.showMemberEditor.toggle()
+                            }) {
+                                Image(systemName: "checkmark.circle")
+                                    .foregroundColor(.green)
+                                    .imageScale(.large)
+                            }
                     
-                        Button(action: {
-                            self.draftMember = ""
-                            self.showMemberEditor.toggle()
-                        }) {
-                            Image(systemName: "xmark.circle")
-                                .foregroundColor(.red)
-                                .imageScale(.large)
+                            Button(action: {
+                                self.draftMember = ""
+                                self.showMemberEditor.toggle()
+                            }) {
+                                Image(systemName: "xmark.circle")
+                                    .foregroundColor(.red)
+                                    .imageScale(.large)
+                            }
                         }
                     }
                 }
                 
-                VStack {
-                    ForEach(variable.setMembers, id: \.self) { member in
-                        Text(member)
+                if let setVariable = variable as? ExerciseSetVariable {
+                    VStack {
+                        ForEach(setVariable.members, id: \.self) { member in
+                            Text(member)
+                        }
                     }
+                } else {
+                    EmptyView()
                 }
             }
         }
@@ -259,7 +265,7 @@ struct ExpandingTextView: View {
     }
     
     private func textDidChange(_ textView: UITextView) {
-        self.textViewHeight = max(textView.contentSize.height, minHeight)
+        self.textViewHeight = max(textView.contentSize.height, self.minHeight)
     }
 }
 
@@ -285,7 +291,7 @@ struct WrappedTextView: UIViewRepresentable {
     }
     
     func makeCoordinator() -> Coordinator {
-        return Coordinator(text: $text, textDidChange: textDidChange)
+        return Coordinator(text: $text, textDidChange: self.textDidChange)
     }
     
     class Coordinator: NSObject, UITextViewDelegate {

@@ -55,22 +55,43 @@ struct ExerciseVariableSummary: View {
     var variable: ExerciseVariable
     
     var body: some View {
-        if variable.setMembers.count > 0 {
+        if let setVariable = variable as? ExerciseSetVariable {
             VStack(alignment: .leading) {
                 HStack {
-                    Text(variable.name)
-                    Badge(name: variable.type)
+                    Text(setVariable.name)
+                    Badge(name: "set")
                 }
                 
-                Text(variable.getSetMembersString())
-                    .padding(.leading)
+                HStack {
+                    ForEach(setVariable.members, id: \.self) { member in
+                        Badge(name: member)
+                    }
+                }
             }
-        } else {
-            HStack {
-                Text(variable.name)
-                Badge(name: variable.type)
+        } else if let rangeVariable = variable as? ExerciseRangeVariable {
+            VStack(alignment: .leading) {
+                HStack {
+                    Text(rangeVariable.name)
+                    Badge(name: "set")
+                }
             }
         }
+//        if variable.setMembers.count > 0 {
+//            VStack(alignment: .leading) {
+//                HStack {
+//                    Text(variable.name)
+//                    Badge(name: variable.type)
+//                }
+//
+//                Text(variable.getSetMembersString())
+//                    .padding(.leading)
+//            }
+//        } else {
+//            HStack {
+//                Text(variable.name)
+//                Badge(name: variable.type)
+//            }
+//        }
     }
 }
 
