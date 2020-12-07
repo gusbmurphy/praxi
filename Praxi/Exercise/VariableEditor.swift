@@ -11,6 +11,7 @@ struct VariableEditor: View {
     @Binding var variable: ExerciseVariable
     @Binding var isEditing: Bool
     @State var showMemberEditor = false
+    @State var draftVariableType = ExerciseVariableType.generic
     @State var draftMember = ""
     
     var body: some View {
@@ -20,10 +21,14 @@ struct VariableEditor: View {
                 TextField("Name", text: $variable.name)
             }
             
-//            HStack {
-//                Text("Type").font(.headline)
-//                TextField("Type", text: $variable.type)
-//            }
+            HStack {
+                Text("Type").font(.headline)
+                Picker("Type", selection: $draftVariableType) {
+                    ForEach(ExerciseVariableType.allCases) { type in
+                        Text(type.rawValue).tag(type)
+                    }
+                }.pickerStyle(SegmentedPickerStyle())
+            }
             
             VStack(alignment: .leading) {
                 HStack {
@@ -81,11 +86,5 @@ struct VariableEditor: View {
             }
         }
         .border(Color.black, width: 1)
-    }
-}
-
-struct VariableEditor_Previews: PreviewProvider {
-    static var previews: some View {
-        VariableEditor()
     }
 }
