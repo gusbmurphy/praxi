@@ -64,7 +64,7 @@ struct ExerciseVariableSummary: View {
                 
                 HStack {
                     ForEach(setVariable.members, id: \.self) { member in
-                        Badge(name: member)
+                        SetMemberBadge(name: member)
                     }
                 }
             }
@@ -72,7 +72,7 @@ struct ExerciseVariableSummary: View {
             VStack(alignment: .leading) {
                 HStack {
                     Text(rangeVariable.name)
-                    Badge(name: "set")
+                    Badge(name: "range")
                 }
             }
         }

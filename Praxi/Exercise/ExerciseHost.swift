@@ -99,6 +99,16 @@ struct Badge: View {
     }
 }
 
+struct SetMemberBadge: View {
+    var name: String
+
+    var body: some View {
+        Text(name)
+            .foregroundColor(.white)
+            .background(Color.blue)
+    }
+}
+
 struct ExerciseHost_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
