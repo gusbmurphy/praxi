@@ -18,15 +18,17 @@ struct Exercise {
     let id = UUID()
 }
 
-enum ExerciseType: String {
+enum ExerciseVariableType: String, CaseIterable, Identifiable {
     case generic = "generic"
     case range = "range"
     case set = "set"
+    
+    var id: String { self.rawValue }
 }
 
 class ExerciseVariable: Hashable {
     var name: String = ""
-    var type: ExerciseType {
+    var type: ExerciseVariableType {
         return .generic
     }
     
@@ -41,7 +43,7 @@ class ExerciseVariable: Hashable {
 
 class ExerciseRangeVariable: ExerciseVariable {
     var value: Int = 0
-    override var type: ExerciseType {
+    override var type: ExerciseVariableType {
         return .range
     }
     
@@ -54,7 +56,7 @@ class ExerciseRangeVariable: ExerciseVariable {
 
 class ExerciseSetVariable: ExerciseVariable {
     var members: [String] = []
-    override var type: ExerciseType {
+    override var type: ExerciseVariableType {
         return .set
     }
 
