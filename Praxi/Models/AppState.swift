@@ -14,8 +14,8 @@ struct AppState {
     /* In order to be more performant, the exercises themselves are stored in a dictionary
      with their IDs as keys, and the ordering of them is stored seperately as a simple array
      of those IDs. */
-    var exercises: [UUID: Exercise]
-    var allExercises: [UUID]
+    var exercises: [UUID: Exercise] = [Exercise.default.id: Exercise.default]
+    var allExercises: [UUID] = [Exercise.default.id]
 }
 
 enum AppAction {
