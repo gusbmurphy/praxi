@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0F171A90255E15A100220D43 /* VariableEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F171A8F255E15A100220D43 /* VariableEditor.swift */; };
-		0F3F9B122547825D00FB9477 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3F9B112547825D00FB9477 /* UserData.swift */; };
 		0F3F9B172547832100FB9477 /* ExerciseEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F3F9B162547832100FB9477 /* ExerciseEditor.swift */; };
 		0F6FCC10257EE62600FC6309 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F6FCC0F257EE62600FC6309 /* AppState.swift */; };
 		0F743A002548F88F00FAA9D5 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7439FF2548F88F00FAA9D5 /* ImagePicker.swift */; };
@@ -43,7 +42,6 @@
 
 /* Begin PBXFileReference section */
 		0F171A8F255E15A100220D43 /* VariableEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariableEditor.swift; sourceTree = "<group>"; };
-		0F3F9B112547825D00FB9477 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		0F3F9B162547832100FB9477 /* ExerciseEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseEditor.swift; sourceTree = "<group>"; };
 		0F6FCC0F257EE62600FC6309 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		0F7439FF2548F88F00FAA9D5 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
@@ -167,7 +165,6 @@
 			isa = PBXGroup;
 			children = (
 				0F8689FA2547511A00FE85B9 /* Exercise.swift */,
-				0F3F9B112547825D00FB9477 /* UserData.swift */,
 				0F6FCC0F257EE62600FC6309 /* AppState.swift */,
 			);
 			path = Models;
@@ -302,7 +299,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0F3F9B122547825D00FB9477 /* UserData.swift in Sources */,
 				0F8689C32547377200FE85B9 /* ContentView.swift in Sources */,
 				0F171A90255E15A100220D43 /* VariableEditor.swift in Sources */,
 				0F8689FB2547511A00FE85B9 /* Exercise.swift in Sources */,

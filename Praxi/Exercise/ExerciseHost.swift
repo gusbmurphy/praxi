@@ -9,23 +9,28 @@ import SwiftUI
 
 struct ExerciseHost: View {
     @Environment(\.editMode) var mode
-    @EnvironmentObject var userData: UserData
+//    @EnvironmentObject var userData: UserData
+    @ObservedObject var store: AppStore
     @State var draftExercise = Exercise.default
     @State var draftRecord = ExerciseRecord()
     @State var showNewRecordSheet = false
-    var exerciseIndex: Int
+//    var exerciseIndex: Int
+    var exerciseId: UUID
 
     var body: some View {
         VStack(alignment: .leading) {
             if self.mode?.wrappedValue == .inactive {
-                ExerciseSummary(exercise: userData.exercises[exerciseIndex])
+                ExerciseSummary(exercise: store.state.exercises[exerciseId]!)
+//                ExerciseSummary(exercise: userData.exercises[exerciseIndex])
             } else {
                 ExerciseEditor(exercise: $draftExercise)
                     .onAppear {
-                        self.draftExercise = self.userData.exercises[exerciseIndex]
+                        self.draftExercise = self.store.state.exercises[exerciseId]!
+//                        self.draftExercise = self.userData.exercises[exerciseIndex]
                     }
                     .onDisappear {
-                        self.userData.exercises[exerciseIndex] = self.draftExercise
+                        store.send(.replace(exerciseWith: exerciseId, withNew: self.draftExercise))
+//                        self.userData.exercises[exerciseIndex] = self.draftExercise
                     }
             }
         }
@@ -33,12 +38,13 @@ struct ExerciseHost: View {
         .sheet(isPresented: $showNewRecordSheet, content: {
             NewRecordView(record: $draftRecord, shouldShow: $showNewRecordSheet)
         })
-        .navigationTitle(userData.exercises[exerciseIndex].name)
+        .navigationTitle(store.state.exercises[exerciseId]?.name ?? "")
+//        .navigationTitle(userData.exercises[exerciseIndex].name)
         .toolbar(content: {
             ToolbarItem(placement: ToolbarItemPlacement.cancellationAction) {
                 if self.mode?.wrappedValue == .active {
                     Button("Cancel") {
-                        self.draftExercise = self.userData.exercises[exerciseIndex]
+                        self.draftExercise = self.store.state.exercises[exerciseId]!
                         self.mode?.animation().wrappedValue = .inactive
                     }
                 }
@@ -112,7 +118,8 @@ struct SetMemberBadge: View {
 struct ExerciseHost_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ExerciseHost(exerciseIndex: 0).environmentObject(UserData())
+            ExerciseHost(store: AppStore(initialState: AppState.default, reducer: appReducer), exerciseId: Exercise.default.id)
+//            ExerciseHost(exerciseIndex: 0).environmentObject(UserData())
         }
     }
 }

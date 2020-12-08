@@ -6,7 +6,10 @@
 //
 
 // Thank you to Majid at swiftwithmajid.com for this great article!
-// https://swiftwithmajid.com/2019/09/18/redux-like-state-container-in-swiftui/
+// https://swiftwithmajid.com/2019/09/18/redux-like-state-container-in-swiftui
+
+// And also to Point-Free for their great materials that probably inspired Majid:
+// https://www.pointfree.co/episodes/ep68-composable-state-management-reducers
 
 import Foundation
 
@@ -19,7 +22,7 @@ struct AppState {
 }
 
 enum AppAction {
-    case addNew(exercise: Exercise, with: UUID)
+    case addNew(exercise: Exercise)
     case replace(exerciseWith: UUID, withNew: Exercise)
 }
 
@@ -27,9 +30,9 @@ typealias Reducer<State, Action> = (inout State, Action) -> Void
 
 func appReducer(state: inout AppState, action: AppAction) {
     switch action {
-    case let .addNew(exercise: exercise, with: id):
-        state.exercises[id] = exercise
-        state.allExercises.append(id)
+    case let .addNew(exercise: exercise):
+        state.exercises[exercise.id] = exercise
+        state.allExercises.append(exercise.id)
     case let .replace(exerciseWith: id, withNew: exercise):
         state.exercises[id] = exercise
     }
@@ -45,8 +48,15 @@ final class Store<State, Action>: ObservableObject {
     }
     
     func send(_ action: Action) {
-        reducer(&state, action)
+        self.reducer(&self.state, action)
     }
 }
 
 typealias AppStore = Store<AppState, AppAction>
+
+extension AppState {
+    static let `default` = Self(
+        exercises: [Exercise.default.id: Exercise.default],
+        allExercises: [Exercise.default.id]
+    )
+}

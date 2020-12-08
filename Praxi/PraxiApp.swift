@@ -11,7 +11,8 @@ import SwiftUI
 struct PraxiApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(UserData())
+            ContentView(store: AppStore(initialState: AppState.default, reducer: appReducer))
+//            ContentView().environmentObject(UserData())
         }
     }
 }
