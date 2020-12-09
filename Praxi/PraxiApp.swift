@@ -12,7 +12,6 @@ struct PraxiApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView(store: AppStore(initialState: AppState.default, reducer: appReducer))
-//            ContentView().environmentObject(UserData())
         }
     }
 }

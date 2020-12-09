@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ContentView: View {
-//    @EnvironmentObject var userData: UserData
     @ObservedObject var store: AppStore
     
     var body: some View {
@@ -28,7 +27,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-//        ContentView().environmentObject(UserData())
         ContentView(store: AppStore(initialState: AppState.default, reducer: appReducer))
     }
 }

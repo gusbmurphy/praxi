@@ -9,28 +9,23 @@ import SwiftUI
 
 struct ExerciseHost: View {
     @Environment(\.editMode) var mode
-//    @EnvironmentObject var userData: UserData
     @ObservedObject var store: AppStore
     @State var draftExercise = Exercise.default
     @State var draftRecord = ExerciseRecord()
     @State var showNewRecordSheet = false
-//    var exerciseIndex: Int
     var exerciseId: UUID
 
     var body: some View {
         VStack(alignment: .leading) {
             if self.mode?.wrappedValue == .inactive {
                 ExerciseSummary(exercise: store.state.exercises[exerciseId]!)
-//                ExerciseSummary(exercise: userData.exercises[exerciseIndex])
             } else {
                 ExerciseEditor(exercise: $draftExercise)
                     .onAppear {
                         self.draftExercise = self.store.state.exercises[exerciseId]!
-//                        self.draftExercise = self.userData.exercises[exerciseIndex]
                     }
                     .onDisappear {
                         store.send(.replace(exerciseWith: exerciseId, withNew: self.draftExercise))
-//                        self.userData.exercises[exerciseIndex] = self.draftExercise
                     }
             }
         }
@@ -39,7 +34,6 @@ struct ExerciseHost: View {
             NewRecordView(record: $draftRecord, shouldShow: $showNewRecordSheet)
         })
         .navigationTitle(store.state.exercises[exerciseId]?.name ?? "")
-//        .navigationTitle(userData.exercises[exerciseIndex].name)
         .toolbar(content: {
             ToolbarItem(placement: ToolbarItemPlacement.cancellationAction) {
                 if self.mode?.wrappedValue == .active {
@@ -119,7 +113,6 @@ struct ExerciseHost_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             ExerciseHost(store: AppStore(initialState: AppState.default, reducer: appReducer), exerciseId: Exercise.default.id)
-//            ExerciseHost(exerciseIndex: 0).environmentObject(UserData())
         }
     }
 }
