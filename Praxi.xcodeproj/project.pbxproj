@@ -114,7 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				0F868A00254751C700FE85B9 /* Models */,
-				0F8689EE254737FE00FE85B9 /* Exercise */,
+				0F8689EE254737FE00FE85B9 /* Views */,
 				0F8689C02547377200FE85B9 /* PraxiApp.swift */,
 				0F8689C22547377200FE85B9 /* ContentView.swift */,
 				0F8689C42547377300FE85B9 /* Assets.xcassets */,
@@ -150,7 +150,7 @@
 			path = PraxiUITests;
 			sourceTree = "<group>";
 		};
-		0F8689EE254737FE00FE85B9 /* Exercise */ = {
+		0F8689EE254737FE00FE85B9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				0F8689EF2547381200FE85B9 /* ExerciseHost.swift */,
@@ -160,7 +160,7 @@
 				0F977ABD254B209E0062F955 /* ExerciseList.swift */,
 				0F171A8F255E15A100220D43 /* VariableEditor.swift */,
 			);
-			path = Exercise;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		0F868A00254751C700FE85B9 /* Models */ = {
