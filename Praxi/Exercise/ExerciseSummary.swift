@@ -76,22 +76,6 @@ struct ExerciseVariableSummary: View {
                 }
             }
         }
-//        if variable.setMembers.count > 0 {
-//            VStack(alignment: .leading) {
-//                HStack {
-//                    Text(variable.name)
-//                    Badge(name: variable.type)
-//                }
-//
-//                Text(variable.getSetMembersString())
-//                    .padding(.leading)
-//            }
-//        } else {
-//            HStack {
-//                Text(variable.name)
-//                Badge(name: variable.type)
-//            }
-//        }
     }
 }
 
